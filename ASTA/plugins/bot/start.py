@@ -47,20 +47,36 @@ NEXIO = [
     "https://telegra.ph/file/d30d11c4365c025c25e3e.jpg",
 ]
 
-ASTA = [
-    "CAACAgUAAxkBAAEBYw5m7G9P80t1_j2B3Yd92giEZl5pUAACDQsAAu5MeVcOK7bEmdSlUB4E",
-    "CAACAgUAAxkBAAEBYwxm7G9LVcg14qUcZZA3UW_DD8b5EwACpwsAAo1FeFfhiv4M5X_-sR4E",
-    "CAACAgUAAxkBAAEBYwdm7G9B0AQOHXTL2YqQPS_1v9aoKwACGw0AAu3GeVeciSOmGXW1Mx4E",
-    "CAACAgUAAxkBAAEBYw9m7G9UNbKd5uykZTX8lZ4Cr8LAzAACrQsAAovseFe_Dx9-6uc6Ux4E",
-    "CAACAgUAAxkBAAEBYwpm7G9GSePQOKa6J19IJmN4aQdd6wAC-QoAAmpLeFeIwvGei64Sph4E",
-    "CAACAgUAAxkBAAEBYwlm7G9F_WH00zaCrHCrOE0hPNVwzgACGAwAAgLieFfTOC4m1R4KvR4E",
-    "CAACAgUAAxkBAAEBYyBm7G-lKV7aHgEF3nJFkAfn56C6cwACgAkAArWleFcq3_E-UPFIzh4E",
-    "CAACAgUAAxkBAAEBYw1m7G9NGhPaRs7LQ1qNjukWtqleMgAC9QkAAqeOeFeHI7lMCMruQR4E",
-    "CAACAgUAAxkBAAEBYwhm7G9C5a3pRXGlnxmd-bPpk6wPTgACKwoAAqDYeVd8I_IUW4LCkx4E",
-    "CAACAgUAAxkBAAEBYyFm7G-rzbXl2VpA37MJevvoJ3712QACbQoAAktbeFfdKoQ_a4J2PR4E",
-    "CAACAgUAAxkBAAEBYyJm7G-9KCjUg2MsRKZVTpR_aqn9lwACYA4AAqTycVdmzhfCS8nEPx4E",
-    "CAACAgUAAxkBAAEBYyNm7G_FwL1o8EbUs4wtYlMwIxAgCAACDQwAAncPeVe97cDgXeKF4B4E",
-],
+
+import asyncio
+
+# Private panel call (same as before)
+out = private_panel(_)
+
+# Start animation sequence
+baby = await message.reply_text("**__ᴅɪηɢ ᴅᴏηɢ.🥀__**")
+
+for text in [
+    "**__ᴅɪηɢ ᴅᴏηɢ..🥀__**",
+    "**__ᴅɪηɢ ᴅᴏηɢ...🥀__**",
+    "**__ᴅɪηɢ ᴅᴏηɢ....🥀__**",
+    "**__ᴅɪηɢ ᴅᴏηɢ.....🥀__**",
+    "**__sᴛᴧʀᴛɪηɢ.❤️‍🔥__**",
+    "**__sᴛᴧʀᴛɪηɢ..❤️‍🔥__**",
+    "**__sᴛᴧʀᴛɪηɢ...❤️‍🔥__**",
+    "**__sᴛᴧʀᴛɪηɢ....❤️‍🔥__**",
+    "**__sᴛᴧʀᴛɪηɢ.....❤️‍🔥__**",
+    "**__ʙσᴛ sᴛᴧʀᴛєᴅ.💤__**",
+    "**__ʙσᴛ sᴛᴧʀᴛєᴅ..💤__**",
+    "**__ʙσᴛ sᴛᴧʀᴛєᴅ...💤__**",
+    "**__ʙσᴛ sᴛᴧʀᴛєᴅ....💤__**",
+    "**__ʙσᴛ sᴛᴧʀᴛєᴅ.....💤__**"
+]:
+    await asyncio.sleep(0.3)
+    await baby.edit_text(text)
+
+await asyncio.sleep(0.5)
+await baby.delete()
 
 
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)

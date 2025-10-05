@@ -64,7 +64,7 @@ ASTA = [
         await baby.edit_text(f"**__ʙσᴛ sᴛᴧʀᴛєᴅ...💤__**")
         await baby.edit_text(f"**__ʙσᴛ sᴛᴧʀᴛєᴅ....💤__**")
         await baby.edit_text(f"**__ʙσᴛ sᴛᴧʀᴛєᴅ.....💤__**")
-        await baby.delete()
+        await baby.delete(),
 
 
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)

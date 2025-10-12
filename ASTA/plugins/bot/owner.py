@@ -15,7 +15,7 @@ start_txt = """
 │├───────────────────╯
 ├┼───────────────────⦿
 ├┤~ @ixasta1
-├┤~ @YOUR_ASTA_001
+├┤~ @ixasta
 ├┤~ @Laibaamusicbot
 ├┼──────────────────────────⦿
 │├──────────────────────────╮
@@ -32,10 +32,10 @@ start_txt = """
 async def start(_, msg):
     buttons = [
         [ 
-          InlineKeyboardButton("𝚴 𝐎 𝐁 𝚰 𝐓 𝚲", url=f"ixasta1")
+          InlineKeyboardButton("⋏ 𝛅 𝛕 ⋏", url=f"ixasta1")
         ],
         [
-          InlineKeyboardButton("ＨＥＬＰ", url="https://t.me/+wPjAlUcObehiZDM1"),
+          InlineKeyboardButton("ＨＥＬＰ", url="https://t.me/oldskoolgc"),
           InlineKeyboardButton("ＲＥＰＯ", url="https://t.me/ixasta1"),
           ],
                [
@@ -49,7 +49,7 @@ InlineKeyboardButton("ＯＦＦＩＣＩＡＬ ＢＯＴ", url=f"https://t.me/La
     reply_markup = InlineKeyboardMarkup(buttons)
     
     await msg.reply_photo(
-        photo="https://files.catbox.moe/tcz7s6.jpg",
+        photo="https://files.catbox.moe/9eq3l9.jpg",
         caption=start_txt,
         reply_markup=reply_markup
     )

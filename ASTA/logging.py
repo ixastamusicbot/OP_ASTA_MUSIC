@@ -2,6 +2,7 @@ import logging
 from logging import Logger, StreamHandler
 from logging.handlers import RotatingFileHandler
 
+# Function to setup fast, non-blocking logger
 def setup_logger(name: str) -> Logger:
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
@@ -19,8 +20,10 @@ def setup_logger(name: str) -> Logger:
         )
         logger.addHandler(console_handler)
 
-        # Rotating file handler
-        file_handler = RotatingFileHandler("log.txt", maxBytes=5_000_000, backupCount=3)
+        # Rotating file handler (prevents huge log files)
+        file_handler = RotatingFileHandler(
+            "log.txt", maxBytes=5_000_000, backupCount=3
+        )
         file_handler.setLevel(logging.INFO)
         file_handler.setFormatter(
             logging.Formatter(
@@ -32,10 +35,10 @@ def setup_logger(name: str) -> Logger:
 
     return logger
 
-# Reduce noise from external libraries
+# Reduce noise from heavy libraries
 logging.getLogger("httpx").setLevel(logging.ERROR)
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 logging.getLogger("pytgcalls").setLevel(logging.ERROR)
 
-# Use this LOGGER in all modules
+# LOGGER function to use in all modules
 LOGGER = lambda name: setup_logger(name)

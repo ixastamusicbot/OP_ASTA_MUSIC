@@ -2,7 +2,7 @@ import logging
 from logging import Logger, StreamHandler
 from logging.handlers import RotatingFileHandler
 
-# Function to setup fast, non-blocking logger
+# ✅ Fast & non-blocking logger setup
 def setup_logger(name: str) -> Logger:
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
@@ -12,33 +12,38 @@ def setup_logger(name: str) -> Logger:
         # Console handler
         console_handler = StreamHandler()
         console_handler.setLevel(logging.INFO)
-        console_handler.setFormatter(
-            logging.Formatter(
-                "[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
-                datefmt="%d-%b-%y %H:%M:%S"
-            )
+        console_formatter = logging.Formatter(
+            "[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
+            datefmt="%d-%b-%y %H:%M:%S"
         )
+        console_handler.setFormatter(console_formatter)
         logger.addHandler(console_handler)
 
-        # Rotating file handler (prevents huge log files)
+        # Rotating file handler (prevents large log files)
         file_handler = RotatingFileHandler(
-            "log.txt", maxBytes=5_000_000, backupCount=3
+            "asta.log", maxBytes=5_000_000, backupCount=3
         )
         file_handler.setLevel(logging.INFO)
-        file_handler.setFormatter(
-            logging.Formatter(
-                "[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
-                datefmt="%d-%b-%y %H:%M:%S"
-            )
+        file_formatter = logging.Formatter(
+            "[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
+            datefmt="%d-%b-%y %H:%M:%S"
         )
+        file_handler.setFormatter(file_formatter)
         logger.addHandler(file_handler)
 
     return logger
 
-# Reduce noise from heavy libraries
+
+# ✅ Mute unnecessary logs from heavy libraries
 logging.getLogger("httpx").setLevel(logging.ERROR)
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 logging.getLogger("pytgcalls").setLevel(logging.ERROR)
 
-# LOGGER function to use in all modules
-LOGGER = lambda name: setup_logger(name)
+
+# ✅ Use this anywhere: LOGGER = get_logger(__name__)
+def get_logger(name: str = "ASTA") -> Logger:
+    return setup_logger(name)
+
+
+# ✅ Default main logger
+LOGGER = get_logger("ASTA")

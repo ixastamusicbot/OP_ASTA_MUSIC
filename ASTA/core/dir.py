@@ -1,8 +1,9 @@
 import os
 import asyncio
-from ..logging import LOGGER
+from ..logging import get_logger
 
-logger = LOGGER(__name__)
+# ✅ Proper logger instance for this module
+logger = get_logger(__name__)
 
 async def clean_images():
     """Remove image files asynchronously"""

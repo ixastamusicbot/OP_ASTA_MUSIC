@@ -3,8 +3,7 @@ from pyrogram.enums import ChatMemberStatus, ParseMode
 
 import config
 
-from ..logging import LOGGER
-
+from ASTA.logging import LOGGER  # Absolute import use kiya
 
 class ASTA(Client):
     def __init__(self):
@@ -28,7 +27,11 @@ class ASTA(Client):
         try:
             await self.send_message(
                 chat_id=config.LOGGER_ID,
-                text=f"<u><b>» {self.mention} ʙᴏᴛ sᴛᴀʀᴛᴇᴅ :</b><u>\n\nɪᴅ : <code>{self.id}</code>\nɴᴀᴍᴇ : {self.name}\nᴜsᴇʀɴᴀᴍᴇ : @{self.username}",
+                text=f"<u><b>» {self.mention} ʙᴏᴛ sᴛᴀʀᴛᴇᴅ :</b><u>
+
+ɪᴅ : <code>{self.id}</code>
+ɴᴀᴍᴇ : {self.name}
+ᴜsᴇʀɴᴀᴍᴇ : @{self.username}",
             )
         except (errors.ChannelInvalid, errors.PeerIdInvalid):
             LOGGER(__name__).error(
@@ -37,7 +40,8 @@ class ASTA(Client):
             exit()
         except Exception as ex:
             LOGGER(__name__).error(
-                f"Bot has failed to access the log group/channel.\n  Reason : {type(ex).__name__}."
+                f"Bot has failed to access the log group/channel.
+  Reason : {type(ex).__name__}."
             )
             exit()
 
